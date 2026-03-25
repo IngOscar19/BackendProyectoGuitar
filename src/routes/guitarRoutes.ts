@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { body, param } from 'express-validator'
 import { getGuitars, getGuitarById, createGuitar, updateGuitar, deleteGuitar } from '../handlers/guitarController'
-import { handleInputErrors } from '../middleware/HandleInputErrors'
+import { handleInputErrors } from '../middleware/handleInputErrors';
 
 const router = Router()
 

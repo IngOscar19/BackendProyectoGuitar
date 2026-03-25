@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const guitarController_1 = require("../handlers/guitarController");
+const handleInputErrors_1 = require("../middleware/handleInputErrors");
+const router = (0, express_1.Router)();
+router.get('/', guitarController_1.getGuitars);
+router.get('/:id', (0, express_validator_1.param)('id').isInt().withMessage('ID no válido'), handleInputErrors_1.handleInputErrors, guitarController_1.getGuitarById);
+router.post('/', (0, express_validator_1.body)('name').notEmpty().withMessage('El nombre es obligatorio'), (0, express_validator_1.body)('image').notEmpty().withMessage('La imagen es obligatoria'), (0, express_validator_1.body)('description').notEmpty().withMessage('La descripción es obligatoria'), (0, express_validator_1.body)('price').isFloat({ min: 1 }).withMessage('El precio debe ser mayor a 0'), handleInputErrors_1.handleInputErrors, guitarController_1.createGuitar);
+router.put('/:id', (0, express_validator_1.param)('id').isInt().withMessage('ID no válido'), (0, express_validator_1.body)('name').notEmpty().withMessage('El nombre es obligatorio'), (0, express_validator_1.body)('image').notEmpty().withMessage('La imagen es obligatoria'), (0, express_validator_1.body)('description').notEmpty().withMessage('La descripción es obligatoria'), (0, express_validator_1.body)('price').isFloat({ min: 1 }).withMessage('El precio debe ser mayor a 0'), handleInputErrors_1.handleInputErrors, guitarController_1.updateGuitar);
+router.delete('/:id', (0, express_validator_1.param)('id').isInt().withMessage('ID no válido'), handleInputErrors_1.handleInputErrors, guitarController_1.deleteGuitar);
+exports.default = router;

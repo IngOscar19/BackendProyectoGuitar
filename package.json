@@ -4,11 +4,12 @@
   "description": "API REST para GuitarLA",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "seed": "ts-node src/seed.ts"
-  },
+  "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "render-start": "tsc && node dist/server.js",
+  "seed": "ts-node src/seed.ts"
+},
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
